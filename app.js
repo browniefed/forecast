@@ -1,6 +1,6 @@
 //Require the react-native library
 var React = require('react-native');
-
+var getImage = require('./getImage');
 //This is called destructuring in ES2015 for JavaScript.
 //Equivalent code would be
 /*
@@ -53,10 +53,16 @@ var App = React.createClass({
   //This is the render function. Every react class you create must have a render function that returns one component only
   render: function() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>The weather outside is weather</Text>
       </View>
     )
+  }
+})
+
+var styles = StyleSheet.create({
+  container: {
+    flex: 1
   }
 })
 
