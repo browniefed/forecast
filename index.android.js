@@ -1,51 +1,19 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
-'use strict';
-import React, {
-  AppRegistry,
-  Component,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+// Require react-native
+var React = require('react-native');
+//Assign the variable AppRegistry from React.AppRegistry
+var AppRegistry = React.AppRegistry;
 
-class forecast extends Component {
-  render() {
+//Require our application that is our weather application
+var App = require('./app');
+
+//Our Forecast component it just renders our app
+var Forecast = React.createClass({
+  render: function() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
+      <App />
+    )
   }
-}
+})
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
-AppRegistry.registerComponent('forecast', () => forecast);
+//This is a special thing for React Native. It sends a message to the native world that our base/root component is the Forecast component
+AppRegistry.registerComponent('forecast', () => Forecast);
