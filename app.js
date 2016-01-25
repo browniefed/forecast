@@ -11,11 +11,12 @@ var StyleSheet = React.StyleSheet
 let {
   View,
   Text,
+  Image,
   StyleSheet
 } = React;
 
 //Add your api key
-var API_KEY = '';
+var API_KEY = '691852a7af8ca10f821920a370e069fb';
 
 //Create our application component
 var App = React.createClass({
@@ -52,17 +53,43 @@ var App = React.createClass({
   },
   //This is the render function. Every react class you create must have a render function that returns one component only
   render: function() {
+    //If we are loading then return some a full page view (flex: 1), that centers its children (the Text).
+    if (this.state.loading) {
+      return (
+        <View style={[styles.container, styles.center]}>
+          <Text>Loading...</Text>
+        </View>
+      )
+    }
+
+    //When loading is false we will just render our data because we have it now
+    //Images need to have a defined width/height on them, there are some other special things we can do to not require that but for now lets just give it a width/height
+    //You'll notice the `{}`. This tells React to evaluate it as JavaScript code versus text.
+    //So you can see Temperature: {this.state.temperature}°. It will output the word "Temperature" but then get the value we set from the API right next to it.
+    //Temperature: 42.2°
     return (
       <View style={styles.container}>
-        <Text>The weather outside is weather</Text>
+        <Image source={getImage(this.state.icon)} style={{width: 50, height: 50}} />
+        <Text>{this.state.summary}</Text>
+        <Text>Temperature: {this.state.temperature}°</Text>
+        <Text>Humidity: {this.state.humidity}</Text>
+        <Text>Wind Speed: {this.state.windSpeed}</Text>
       </View>
     )
   }
 })
 
+//This creates our StyleSheet, it's just like writing normal css... sort of
 var styles = StyleSheet.create({
+  //A containe, we set flex: 1 which means "take up all available space". Because we are rendering this at the root it takes up the entire screen.
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#4defd2' // we set the background color to a blue green
+  },
+  //This tells react to center all content horizontally, and vertically. Basically putting the thing in the middle of the screen.
+  center: {
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 })
 
