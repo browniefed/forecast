@@ -75,7 +75,7 @@ var App = React.createClass({
     return (
       <View style={styles.container}>
         <View style={[styles.iconContainer, styles.center]}>
-          <Image source={getImage(this.state.icon)} style={{width: 200, height: 200}}/>
+          <Image source={getImage(this.state.icon)} style={styles.image} />
           <Text style={styles.summaryText}>{this.state.summary}</Text>
         </View>
         <View style={styles.numbersContainer}>
@@ -94,6 +94,11 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#4defd2' // we set the background color to a blue green
+  },
+  //Move the style from inline to an style in the StyleSheet
+  image: {
+    width: 200,
+    height: 200
   },
   // This is the container for the icon and summary
   iconContainer: {
