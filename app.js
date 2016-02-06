@@ -67,13 +67,22 @@ var App = React.createClass({
     //You'll notice the `{}`. This tells React to evaluate it as JavaScript code versus text.
     //So you can see Temperature: {this.state.temperature}°. It will output the word "Temperature" but then get the value we set from the API right next to it.
     //Temperature: 42.2°
+    //We add in some wrapping views and use [] (array) syntax to merge two styles together.
+    //Those wrapping views allow us center and align the children content separately.
+    // We also can define different flex values if we want.
+    // If we wanted the lower portion to take up more space we could have the `numbersContainer` be flex: 2. That means it would be 2 times larger than the iconContainer because the iconContainer is flex: 1
+    // We also adjust the width/height from 50 => 200.
     return (
       <View style={styles.container}>
-        <Image source={getImage(this.state.icon)} style={{width: 50, height: 50}} />
-        <Text>{this.state.summary}</Text>
-        <Text>Temperature: {this.state.temperature}°</Text>
-        <Text>Humidity: {this.state.humidity}</Text>
-        <Text>Wind Speed: {this.state.windSpeed}</Text>
+        <View style={[styles.iconContainer, styles.center]}>
+          <Image source={getImage(this.state.icon)} style={{width: 200, height: 200}}/>
+          <Text style={styles.summaryText}>{this.state.summary}</Text>
+        </View>
+        <View style={styles.numbersContainer}>
+          <Text style={styles.lowerText}>Temperature: {this.state.temperature}°</Text>
+          <Text style={styles.lowerText}>Humidity: {this.state.humidity}</Text>
+          <Text style={styles.lowerText}>Wind Speed: {this.state.windSpeed}</Text>
+        </View>
       </View>
     )
   }
@@ -85,6 +94,30 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#4defd2' // we set the background color to a blue green
+  },
+  // This is the container for the icon and summary
+  iconContainer: {
+    flex: 1
+  },
+  // This is the container for the lower numbers
+  numbersContainer: {
+    flex: 1,
+    alignItems: 'center'
+  },
+  // Text style for the summary text
+  // Make the text larger, and also thickish
+  summaryText: {
+    fontSize: 32,
+    fontWeight: "300"
+  },
+  // Text style for the lower text
+  // Set the font size to smallish, and the text really thin, and add spacing on top and bottom
+  lowerText: {
+    fontSize: 22,
+    fontWeight: "100",
+    marginTop: 10,
+    marginBottom: 10,
+    //marginVertical: 10 we could just do marginVertical, it's specific for react-native and not a web standard
   },
   //This tells react to center all content horizontally, and vertically. Basically putting the thing in the middle of the screen.
   center: {

@@ -16,6 +16,7 @@ function getImage(icon) {
       return require('./images/ic_launcher.png');
     case 'partly_cloudy':
     case 'partly-cloudy-night':
+    case 'partly-cloudy-day':
       return require('./images/partly_cloudy.png');
     case 'rain':
       return require('./images/rain.png');
