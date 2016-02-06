@@ -90,7 +90,7 @@ var App = React.createClass({
 
 //This creates our StyleSheet, it's just like writing normal css... sort of
 var styles = StyleSheet.create({
-  //A containe, we set flex: 1 which means "take up all available space". Because we are rendering this at the root it takes up the entire screen.
+  //A container, we set flex: 1 which means "take up all available space". Because we are rendering this at the root it takes up the entire screen.
   container: {
     flex: 1,
     backgroundColor: '#4defd2' // we set the background color to a blue green
@@ -102,7 +102,7 @@ var styles = StyleSheet.create({
   // This is the container for the lower numbers
   numbersContainer: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'center' // we only want to center it in the middle horizontally and not vertically
   },
   // Text style for the summary text
   // Make the text larger, and also thickish
@@ -121,8 +121,8 @@ var styles = StyleSheet.create({
   },
   //This tells react to center all content horizontally, and vertically. Basically putting the thing in the middle of the screen.
   center: {
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: 'center', // center content horizontally in the middle
+    justifyContent: 'center'// center content vertically
   }
 })
 
