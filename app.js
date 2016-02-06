@@ -16,7 +16,7 @@ let {
 } = React;
 
 //Add your api key
-var API_KEY = '691852a7af8ca10f821920a370e069fb';
+var API_KEY = '';
 
 //Create our application component
 var App = React.createClass({
